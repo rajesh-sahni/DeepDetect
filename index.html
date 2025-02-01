@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DeepDetect</title>
+    <!-- Favicon (Logo in Title Bar) -->
+    <link rel="icon" type="image/png" href="Logo.png" />
+    <!-- Link CSS file -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Add OpenCV -->
+    <script async src="opencv.js" onload="OpenCVReady()"></script>
+  </head>
+  <body>
+    <div class="main-section">
+      <div class="left-pannel">
+        <div class="header">
+          <img src="Logo.png" alt="logo" />
+          <h1 id="title"><span>D</span>eep<span>D</span>etect</h1>
+        </div>
+        <div class="left-content">
+          <button class="btn" id="select-image-btn">Select Image</button>
+          <button class="btn" id="run-btn">Run</button>
+          <!-- Hidden file input element to trigger file selection -->
+          <input type="file" id="image-upload" style="display: none" />
+        </div>
+      </div>
+      <div class="right-pannel">
+        <!-- Table Image (Background Image) -->
+        <img id="table-image" src="tablet.png" alt="table-image" />
+        <!-- Uploaded Image (displayed above the table image) -->
+        <img id="uploaded-image" src="" alt="uploaded-image" />
+        <canvas id="main-canvas"></canvas>
+      </div>
+    </div>
+
+    <!-- Link JavaScript file -->
+    <script src="script.js"></script>
+    <!-- Load TensorFlow js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <!-- Load the COCO SSD Model -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+  </body>
+</html>
