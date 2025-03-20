@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DeepDetect</title>
+    <!-- Favicon (Logo in Title Bar) -->
+    <link rel="icon" type="image/png" href="Logo.png" />
+    <!-- Link CSS file -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Add OpenCV -->
+    <script async src="opencv.js" onload="OpenCVReady()"></script>
+  </head>
+  <body>
+    <div class="navbar" id="image-detection">
+      <div class="logo">
+        <img src="Logo.png" alt="logo" />
+        <h1 id="title"><span>D</span>eep<span>D</span>etect</h1>
+      </div>
+      <div class="navlink">
+        <ul>
+          <li><a href="#image-detection">Image</a></li>
+          <li><a href="#video-detection-link">Video</a></li>
+          <li><a href="#livevideo-detection-link">LiveVideo</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="image-detection">
+      <div class="left-pannel">
+        <div class="left-content">
+          <!-- Select image button   -->
+          <button class="btn" id="select-image-btn">Select Image</button>
+          <button class="btn" id="run-img-btn">Run</button>
+          <!-- Hidden file input element to trigger file selection -->
+          <input type="file" id="image-upload" style="display: none" />
+        </div>
+      </div>
+
+      <div class="right-pannel">
+        <!-- Table Image (Background Image) -->
+        <img id="table-image" src="tablet.png" alt="table-image" />
+        <!-- Uploaded Image (displayed above the table image) -->
+        <img id="uploaded-image" src="" alt="uploaded-image" />
+        <canvas id="main-canvas"></canvas>
+      </div>
+    </div>
+    <!-- object detection in video  -->
+    <div class="video-detection" id="video-detection-link">
+      <div class="header">
+        <h1>Object Detection in Video</h1>
+      </div>
+      <div class="video-section">
+        <div class="main-section">
+          <video class="vdo-box" id="video" controls></video>
+          <canvas class="vdo-box" id="canvas"></canvas>
+        </div>
+        <div class="input-vdo">
+          <button class="btn" id="select-video-btn">Select Video</button>
+          <button class="btn" id="run-vdo-btn">Run</button>
+        </div>
+      </div>
+    </div>
+    <!-- object detection in live video  -->
+    <div class="live-video-detection" id="livevideo-detection-link">
+      <div class="header">
+        <h1>Object Detection in Live Video</h1>
+      </div>
+      <div class="live-main-section">
+        <div class="live-vdo-input">
+          <video class="live-box" id="live-video" autoplay playsinline></video>
+          <canvas class="live-box" id="live-canvas"></canvas>
+        </div>
+        <div class="live-btn">
+          <button class="btn" id="startDetection">Start Detecting</button>
+          <button class="btn" id="stopDetection">Stop Detecting</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer design -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-section about">
+          <h2>DeepDetect</h2>
+          <p>
+            DeepDetect is an AI-powered object detection platform designed to
+            analyze images and videos with precision.
+          </p>
+        </div>
+
+        <div class="footer-section links">
+          <h2>Quick Links</h2>
+          <ul>
+            <li><a href="#"> Home</a></li>
+            <li><a href="#image-detection">Image</a></li>
+            <li><a href="#video-detection-link">Video</a></li>
+            <li><a href="#livevideo-detection-link">LiveVideo</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section contact">
+          <h2>Contact Us</h2>
+          <p><i class="fas fa-envelope"></i> contact@deepdetect.com</p>
+          <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+          <p><i class="fas fa-map-marker-alt"></i> Bengaluru, India</p>
+        </div>
+
+        <div class="footer-section social">
+          <h2>Follow Us</h2>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 DeepDetect. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- FontAwesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+
+    <!-- Link JavaScript file -->
+    <!-- Load TensorFlow.js first -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <!-- Load the COCO SSD Model -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"
+    ></script>
+    <!-- Load your JavaScript files AFTER TensorFlow.js -->
+    <script defer src="script.js"></script>
+    <script defer src="script2.js"></script>
+    <script defer src="script3.js"></script>
+  </body>
+</html>
