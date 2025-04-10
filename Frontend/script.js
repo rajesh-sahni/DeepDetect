@@ -1,3 +1,8 @@
+// Reload whole page after clicking on logo
+document.querySelector(".logo").addEventListener("click", () => {
+  location.reload();
+});
+
 // Function to handle image input
 function handleImageInput(event) {
   const fileInput = event.target;
@@ -123,3 +128,129 @@ function OpenCVReady() {
     };
   };
 }
+
+// Show the list
+
+async function fetchImageDetections() {
+  try {
+    const response = await fetch("http://localhost:5000/api/img-detections");
+    const data = await response.json();
+    const container = document.getElementById("img-detections-container");
+
+    container.innerHTML = ""; // Clear previous data
+
+    data.forEach((item) => {
+      // Reverse to show latest on top
+      const div = document.createElement("div");
+      div.classList.add("img-detection");
+      div.innerHTML = `<strong>${
+        item.objectName
+      }</strong> - ${item.probability.toFixed(2)}`;
+      container.prepend(div); // Add new data at the top
+    });
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
+
+// Initial fetch
+fetchImageDetections();
+
+// show the list page
+document
+  .getElementById("img-list-graph-btn")
+  .addEventListener("click", function () {
+    const imgListSection = document.querySelector(".img-detected-list");
+    imgListSection.style.display = "block"; // Make the section visible
+    imgListSection.scrollIntoView({ behavior: "smooth" }); // Scroll to the section
+  });
+
+// hide the list page
+document.getElementById("img-list-hide").addEventListener("click", function () {
+  document.querySelector(".img-detected-list").style.display = "none"; // Hide the section
+});
+
+// Graph
+
+let imgChart;
+
+async function imageGraphFetchData() {
+  try {
+    const response = await fetch("http://localhost:5000/api/img-detections");
+    const data = await response.json();
+    updateImgChart(data);
+  } catch (error) {
+    console.error("Error fetching image detection data:", error);
+  }
+}
+
+function updateImgChart(data) {
+  const groupedData = {};
+
+  data.forEach((entry) => {
+    const time = new Date(entry.detectedAt).toLocaleString(); // changed from timestamp
+    if (!groupedData[time]) groupedData[time] = {};
+    if (!groupedData[time][entry.objectName])
+      groupedData[time][entry.objectName] = 0;
+    groupedData[time][entry.objectName]++;
+  });
+
+  const timestamps = Object.keys(groupedData);
+  const objectTypes = [...new Set(data.map((d) => d.objectName))];
+
+  const datasets = objectTypes.map((name, index) => ({
+    label: name,
+    data: timestamps.map((time) => groupedData[time][name] || 0),
+    backgroundColor: `hsl(${(index * 60) % 360}, 70%, 50%)`,
+  }));
+
+  if (imgChart) imgChart.destroy();
+
+  const ctx = document.getElementById("img-detectionsChart").getContext("2d");
+  imgChart = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: timestamps,
+      datasets: datasets,
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: true },
+        zoom: {
+          pan: { enabled: true, mode: "x" },
+          zoom: { wheel: { enabled: true }, mode: "x" },
+        },
+      },
+      scales: {
+        x: {
+          stacked: false,
+          ticks: {
+            autoSkip: false,
+            maxRotation: 90,
+            minRotation: 45,
+          },
+        },
+        y: {
+          beginAtZero: true,
+          ticks: {
+            stepSize: 1,
+            callback: function (value) {
+              return Number.isInteger(value) ? value : null;
+            },
+          },
+        },
+      },
+    },
+  });
+}
+
+// Initial load
+imageGraphFetchData();
+
+// Manual refresh button
+document.getElementById("refresh-button-img").addEventListener("click", () => {
+  fetchImageDetections();
+  imageGraphFetchData();
+});

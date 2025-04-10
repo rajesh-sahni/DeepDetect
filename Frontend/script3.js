@@ -132,3 +132,133 @@ function stopDetection() {
   document.getElementById("startDetection").disabled = false;
   document.getElementById("stopDetection").disabled = true;
 }
+
+// Show the list with date and time
+async function fetchLiveDetections() {
+  try {
+    const response = await fetch(
+      "http://localhost:5000/api/live-vdo-detections"
+    );
+    const data = await response.json();
+    const container = document.getElementById("live-detections-container");
+
+    container.innerHTML = ""; // Clear previous data
+
+    data.reverse().forEach((item) => {
+      // Convert timestamp to readable format
+      const timestamp = new Date(item.timestamp).toLocaleString();
+
+      const div = document.createElement("div");
+      div.classList.add("live-detection");
+      div.innerHTML = `<strong>${item.class}</strong> - ${item.score.toFixed(
+        2
+      )} <br> <small>${timestamp}</small>`;
+      container.prepend(div); // Add new data at the top
+    });
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
+
+// Initial fetch
+fetchLiveDetections();
+
+// show the list page
+document
+  .getElementById("live-list-graph-btn")
+  .addEventListener("click", function () {
+    const imgListSection = document.querySelector(".live-detected-list");
+    imgListSection.style.display = "block"; // Make the section visible
+    imgListSection.scrollIntoView({ behavior: "smooth" }); // Scroll to the section
+  });
+
+// hide the list page
+document
+  .getElementById("live-list-hide")
+  .addEventListener("click", function () {
+    document.querySelector(".live-detected-list").style.display = "none"; // Hide the section
+  });
+
+// Graph
+let chart;
+
+async function liveGraphFetchData() {
+  try {
+    const response = await fetch(
+      "http://localhost:5000/api/live-vdo-detections"
+    );
+    const data = await response.json();
+
+    const groupedData = {};
+
+    // Group data: timestamp -> class count
+    data.forEach((entry) => {
+      const time = new Date(entry.timestamp).toLocaleString();
+      if (!groupedData[time]) groupedData[time] = {};
+      if (!groupedData[time][entry.class]) groupedData[time][entry.class] = 0;
+      groupedData[time][entry.class]++;
+    });
+
+    const timestamps = Object.keys(groupedData);
+    const objectTypes = [...new Set(data.map((d) => d.class))];
+
+    // Generate datasets using HSL colors based on index
+    const datasets = objectTypes.map((type, index) => ({
+      label: type,
+      data: timestamps.map((time) => groupedData[time][type] || 0),
+      backgroundColor: `hsl(${(index * 60) % 360}, 70%, 50%)`,
+    }));
+
+    if (chart) chart.destroy();
+
+    chart = new Chart(document.getElementById("live-detectionsChart"), {
+      type: "bar",
+      data: {
+        labels: timestamps,
+        datasets: datasets,
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: "top" },
+          zoom: {
+            pan: { enabled: true, mode: "x" },
+            zoom: { wheel: { enabled: true }, mode: "x" },
+          },
+        },
+        scales: {
+          x: {
+            stacked: false,
+            ticks: {
+              autoSkip: false,
+              maxRotation: 90,
+              minRotation: 45,
+            },
+          },
+          y: {
+            stacked: false,
+            beginAtZero: true,
+            ticks: {
+              stepSize: 1,
+              callback: function (value) {
+                return Number.isInteger(value) ? value : null;
+              },
+            },
+          },
+        },
+      },
+    });
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
+
+// Initial load
+liveGraphFetchData();
+
+// Manual refresh button
+document.getElementById("refresh-button-live").addEventListener("click", () => {
+  fetchLiveDetections();
+  liveGraphFetchData();
+});

@@ -118,3 +118,150 @@ document.addEventListener("DOMContentLoaded", async () => {
     video.addEventListener("playing", detectObjects, { once: true });
   });
 });
+
+// Show the list
+
+async function fetchVideoDetections() {
+  try {
+    const response = await fetch("http://localhost:5000/api/vdo-detections");
+    const data = await response.json();
+    const container = document.getElementById("vdo-detections-container");
+
+    container.innerHTML = ""; // Clear previous data
+
+    data.reverse().forEach((entry) => {
+      entry.objects.forEach((obj) => {
+        const div = document.createElement("div");
+        div.classList.add("vdo-detection");
+        div.innerHTML = `<strong>${obj.class}</strong> - ${obj.score.toFixed(
+          2
+        )}`;
+        container.prepend(div);
+      });
+    });
+  } catch (error) {
+    console.error("Error fetching video detections:", error);
+  }
+}
+
+// Initial fetch
+fetchVideoDetections();
+
+// show the list page
+document
+  .getElementById("vdo-list-graph-btn")
+  .addEventListener("click", function () {
+    const imgListSection = document.querySelector(".vdo-detected-list");
+    imgListSection.style.display = "block"; // Make the section visible
+    imgListSection.scrollIntoView({ behavior: "smooth" }); // Scroll to the section
+  });
+
+// hide the list page
+document.getElementById("vdo-list-hide").addEventListener("click", function () {
+  document.querySelector(".vdo-detected-list").style.display = "none"; // Hide the section
+});
+
+// Graph
+
+let chartInstance;
+
+function formatTime(seconds) {
+  const hrs = Math.floor(seconds / 3600)
+    .toString()
+    .padStart(2, "0");
+  const mins = Math.floor((seconds % 3600) / 60)
+    .toString()
+    .padStart(2, "0");
+  const secs = Math.floor(seconds % 60)
+    .toString()
+    .padStart(2, "0");
+  return `${hrs}:${mins}:${secs}`;
+}
+
+async function videoGraphFetchData() {
+  try {
+    const response = await fetch("http://localhost:5000/api/vdo-detections");
+    const data = await response.json();
+    updateChartData(data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
+
+function updateChartData(data) {
+  const timestamps = data.map((entry) => formatTime(entry.timestamp));
+
+  const objectClasses = {};
+  data.forEach((entry, i) => {
+    entry.objects.forEach((obj) => {
+      if (!objectClasses[obj.class]) {
+        objectClasses[obj.class] = new Array(data.length).fill(0);
+      }
+      objectClasses[obj.class][i]++;
+    });
+  });
+
+  const datasets = Object.keys(objectClasses).map((cls, index) => ({
+    label: cls,
+    data: objectClasses[cls],
+    backgroundColor: `hsl(${index * 60}, 70%, 50%)`,
+  }));
+
+  if (chartInstance) {
+    chartInstance.data.labels = timestamps;
+    chartInstance.data.datasets = datasets;
+    chartInstance.update();
+  } else {
+    createChart(timestamps, datasets);
+  }
+}
+
+function createChart(labels, datasets) {
+  const ctx = document.getElementById("video-detectionsChart").getContext("2d");
+  chartInstance = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: labels,
+      datasets: datasets,
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: { stepSize: 1 },
+        },
+        x: {
+          ticks: {
+            callback: function (value, index) {
+              return labels[index];
+            },
+          },
+        },
+      },
+      plugins: {
+        legend: { display: true },
+        zoom: {
+          pan: {
+            enabled: true,
+            mode: "x",
+          },
+          zoom: {
+            wheel: { enabled: true },
+            pinch: { enabled: true },
+            mode: "x",
+          },
+        },
+      },
+    },
+  });
+}
+
+videoGraphFetchData();
+
+// Manual refresh button
+document.getElementById("refresh-button-vdo").addEventListener("click", () => {
+  fetchVideoDetections();
+  videoGraphFetchData();
+});

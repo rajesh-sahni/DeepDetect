@@ -31,6 +31,8 @@
           <!-- Select image button   -->
           <button class="btn" id="select-image-btn">Select Image</button>
           <button class="btn" id="run-img-btn">Run</button>
+          <button class="btn" id="img-list-graph-btn">List & Graph</button>
+
           <!-- Hidden file input element to trigger file selection -->
           <input type="file" id="image-upload" style="display: none" />
         </div>
@@ -44,6 +46,23 @@
         <canvas id="main-canvas"></canvas>
       </div>
     </div>
+    <div class="img-detected-list">
+      <div class="header">
+        <h1>List & Graph Of Object detection in Image</h1>
+      </div>
+      <button class="btn img-refresh" id="refresh-button-img">Refresh</button>
+      <button class="btn img-list-hide" id="img-list-hide">Hide</button>
+      <div class="img-list-graph-container">
+        <div class="img-list-container">
+          <div id="img-detections-container"></div>
+        </div>
+        <div class="img-graph">
+          <canvas id="img-detectionsChart"></canvas>
+        </div>
+      </div>
+
+    </div>
+
     <!-- object detection in video  -->
     <div class="video-detection" id="video-detection-link">
       <div class="header">
@@ -57,8 +76,27 @@
         <div class="input-vdo">
           <button class="btn" id="select-video-btn">Select Video</button>
           <button class="btn" id="run-vdo-btn">Run</button>
+          <button class="btn" id="vdo-list-graph-btn">List & Graph</button>
         </div>
       </div>
+    </div>
+    <!--  video detected list -->
+    <div class="vdo-detected-list">
+      <div class="header">
+        <h1>List & Graph Of Object detection in Video</h1>
+      </div>
+      <button class="btn vdo-refresh" id="refresh-button-vdo">Refresh</button>
+      <button class="btn vdo-list-hide" id="vdo-list-hide">Hide</button>
+
+      <div class="video-list-graph-container">
+        <div class="vdo-list-container">
+          <div id="vdo-detections-container"></div>
+        </div>
+        <div class="video-graph">
+          <canvas id="video-detectionsChart"></canvas>
+        </div>
+      </div>
+
     </div>
     <!-- object detection in live video  -->
     <div class="live-video-detection" id="livevideo-detection-link">
@@ -73,6 +111,24 @@
         <div class="live-btn">
           <button class="btn" id="startDetection">Start Detecting</button>
           <button class="btn" id="stopDetection">Stop Detecting</button>
+          <button class="btn" id="live-list-graph-btn">List & Graph</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- live video detected list -->
+    <div class="live-detected-list">
+      <div class="header">
+        <h1>List & Graph Of Object detection in Live Video</h1>
+      </div>
+      <button class="btn live-refresh" id="refresh-button-live">Refresh</button>
+      <button class="btn live-list-hide" id="live-list-hide">Hide</button>
+      <div class="live-list-graph-container">
+        <div class="live-list-container">
+          <div id="live-detections-container"></div>
+        </div>
+        <div class="live-graph">
+          <canvas id="live-detectionsChart"></canvas>
         </div>
       </div>
     </div>
@@ -135,6 +191,11 @@
       defer
       src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"
     ></script>
+
+    <!-- Load script file for graph -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
+
     <!-- Load your JavaScript files AFTER TensorFlow.js -->
     <script defer src="script.js"></script>
     <script defer src="script2.js"></script>
