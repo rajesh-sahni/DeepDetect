@@ -60,7 +60,6 @@
           <canvas id="img-detectionsChart"></canvas>
         </div>
       </div>
-
     </div>
 
     <!-- object detection in video  -->
@@ -96,7 +95,6 @@
           <canvas id="video-detectionsChart"></canvas>
         </div>
       </div>
-
     </div>
     <!-- object detection in live video  -->
     <div class="live-video-detection" id="livevideo-detection-link">
@@ -109,11 +107,16 @@
           <canvas class="live-box" id="live-canvas"></canvas>
         </div>
         <div class="live-btn">
-          <button class="btn" id="startDetection">Start Detecting</button>
-          <button class="btn" id="stopDetection">Stop Detecting</button>
+          <button class="btn" id="startDetection">Start Live</button>
+          <button class="btn" id="stopDetection">Stop Live</button>
           <button class="btn" id="live-list-graph-btn">List & Graph</button>
         </div>
+        <div id="alertBox">⚠️ Weapon Detected!</div>
       </div>
+      <audio
+        id="alertSound"
+        src="https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg"
+      ></audio>
     </div>
 
     <!-- live video detected list -->

@@ -17,6 +17,7 @@ connectDB();
 app.use("/api", require("./routes/imageRoutes"));
 app.use("/api", require("./routes/videoRoutes"));
 app.use("/api", require("./routes/liveVideoRoutes"));
+app.use("/api", require("./routes/sendAlert"));
 
 // Start server
 const PORT = process.env.PORT || 5000;

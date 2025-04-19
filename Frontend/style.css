@@ -208,8 +208,6 @@ body {
   height: 100%;
 }
 
-
-
 /* video detection */
 .video-detection {
   margin-top: 2.5rem;
@@ -274,7 +272,7 @@ body {
   margin-left: 2.5rem;
   margin-top: 1rem;
 }
-.vdo-list-container{
+.vdo-list-container {
   font-family: Arial, sans-serif;
   width: 400px;
   height: 550px;
@@ -354,6 +352,13 @@ body {
   border: 3px solid rgb(7, 213, 38);
   border-radius: 5px;
 }
+#alertBox {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: red;
+  display: none;
+}
 
 /* live detection list and Graph */
 .live-list-graph-container {
@@ -372,7 +377,7 @@ body {
   margin-left: 2.5rem;
   margin-top: 1rem;
 }
-.live-list-container{
+.live-list-container {
   font-family: Arial, sans-serif;
   width: 400px;
   height: 550px;
