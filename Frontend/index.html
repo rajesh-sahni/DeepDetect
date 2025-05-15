@@ -111,7 +111,7 @@
           <button class="btn" id="stopDetection">Stop Live</button>
           <button class="btn" id="live-list-graph-btn">List & Graph</button>
         </div>
-        <div id="alertBox">⚠️ Weapon Detected!</div>
+        <div id="alertBox">⚠️ Harmful Object Detected!</div>
       </div>
       <audio
         id="alertSound"
@@ -189,11 +189,15 @@
     <!-- Link JavaScript file -->
     <!-- Load TensorFlow.js first -->
     <script defer src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+
     <!-- Load the COCO SSD Model -->
     <script
       defer
       src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"
     ></script>
+    
+    <!-- Add OpenCV -->
+    <script async src="opencv.js" onload="OpenCVReady()"></script>
 
     <!-- Load script file for graph -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

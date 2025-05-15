@@ -67,18 +67,31 @@ document.addEventListener("DOMContentLoaded", async () => {
       ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
       predictions.forEach((pred) => {
-        ctx.strokeStyle = "red";
-        ctx.lineWidth = 2;
-        ctx.strokeRect(pred.bbox[0], pred.bbox[1], pred.bbox[2], pred.bbox[3]);
+        const [x, y, width, height] = pred.bbox;
+        const label = `${pred.class} - ${pred.score.toFixed(2)}`;
 
-        ctx.fillStyle = "red";
+        // Set color based on class (customizable)
+        let color = "blue"; // default
+        if (pred.class === "person") color = "blueviolet";
+        else if (pred.class === "motorcycle") color = "orange";
+        // Add more class-color mappings if needed
+
+        // Draw bounding box
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 2;
+        ctx.strokeRect(x, y, width, height);
+
+        // Label background
         ctx.font = "16px Arial";
-        const probability = (pred.score * 100).toFixed(2);
-        ctx.fillText(
-          `${pred.class} - ${probability}%`,
-          pred.bbox[0],
-          pred.bbox[1] - 5
-        );
+        const textWidth = ctx.measureText(label).width;
+        const textHeight = 18;
+
+        ctx.fillStyle = color;
+        ctx.fillRect(x, y - textHeight, textWidth + 6, textHeight);
+
+        // Label text
+        ctx.fillStyle = "white";
+        ctx.fillText(label, x + 3, y - 3);
       });
 
       // Prepare data for database
@@ -162,7 +175,6 @@ document.getElementById("vdo-list-hide").addEventListener("click", function () {
 });
 
 // Graph
-
 let chartInstance;
 
 function formatTime(seconds) {

@@ -7,6 +7,7 @@ const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 587,
   secure: false,
+  requireTLS: true,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
@@ -21,10 +22,10 @@ router.post("/send-alert", async (req, res) => {
 
   if (now - lastTime > EMAIL_INTERVAL) {
     const mailOptions = {
-      from: `"Weapon Alert" <${process.env.EMAIL_USER}>`,
+      from: `"Harmful Object Alert" <${process.env.EMAIL_USER}>`,
       to: process.env.TO_EMAIL,
-      subject: "⚠️ Weapon Detected!",
-      text: "A weapon has been detected. Please take necessary action.",
+      subject: "⚠️ Harmful Object Detected!",
+      text: "A harmful object has been detected. Please take necessary action.",
     };
 
     try {
