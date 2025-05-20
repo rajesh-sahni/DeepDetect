@@ -87,4 +87,4 @@ DEEPDETECT/
 **Rajesh Kumar**  
 🎓 MCA, NIT Surathkal  
 🌐 [Portfolio](https://rajesh-sahni.github.io/Portfolio/)  
-🔗 [GitHub](https://github.com/rajesh-sahni) | [LinkedIn](https://www.linkedin.com/in/hum_rajesh/)
+🔗 [GitHub](https://github.com/rajesh-sahni) | [LinkedIn](https://www.linkedin.com/in/rajesh-kumar-437a891b0/)
