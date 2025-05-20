@@ -38,3 +38,19 @@ Get instant alert sounds and email notifications upon detecting dangerous object
 - **Database:** MongoDB
 - **AI Model:** TensorFlow.js, COCO-SSD, OpenCV.js for object detection and image processing
  
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+git clone https://github.com/rajesh-sahni/DeepDetect.git
+cd DeepDetect
+
+### 2. Install Dependencies
+cd Backend
+npm install
+
+### 3. Run Backend
+npm start
+
+### 4. Run Frontend
+Click on "Go Live" button
