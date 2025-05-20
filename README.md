@@ -31,3 +31,10 @@ View detection results in a structured list and visual graphs for quick analysis
 🚨 Harmful Object Alerts: 
 Get instant alert sounds and email notifications upon detecting dangerous objects.
 
+## ⚙️ Tech Stack
+
+- **Frontend:** HTML, CSS, JavaScript
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
+- **AI Model:** TensorFlow.js, COCO-SSD, OpenCV.js for object detection and image processing
+ 
