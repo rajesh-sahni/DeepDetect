@@ -56,26 +56,26 @@ npm start
 Click on "Go Live" button
 
 ## 🗂 Folder Structure
-DEEPDETECT/
-├── Frontend/
-│ ├── index.html
-│ ├── style.css
-│ ├── script.js
-│ ├── script2.js
-│ └── script3.js
-├── Backend/
-│ ├── config/
-│ │ └── db.js
-│ ├── models/
-│ │ ├── imageSchema.js
-│ │ ├── liveVideoSchema.js
-│ │ └── videoSchema.js
-│ ├── routes/
-│ │ ├── emailCooldown.js
-│ │ ├── imageRoutes.js
-│ │ ├── liveVideoRoutes.js
-│ │ ├── sendAlert.js
-│ │ └── videoRoutes.js
-│ ├── .env
-│ └── server.js
-
+DEEPDETECT/  
+├── Frontend/  
+│ ├── index.html  
+│ ├── style.css  
+│ ├── script.js  
+│ ├── script2.js  
+│ └── script3.js  
+├── Backend/  
+│ ├── config/  
+│ │ └── db.js  
+│ ├── models/  
+│ │ ├── imageSchema.js  
+│ │ ├── liveVideoSchema.js  
+│ │ └── videoSchema.js  
+│ ├── routes/  
+│ │ ├── emailCooldown.js  
+│ │ ├── imageRoutes.js  
+│ │ ├── liveVideoRoutes.js  
+│ │ ├── sendAlert.js  
+│ │ └── videoRoutes.js  
+│ ├── .env  
+│ └── server.js  
+  
