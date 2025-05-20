@@ -42,12 +42,12 @@ Get instant alert sounds and email notifications upon detecting dangerous object
 
 ### 1. Clone the repository
 
-git clone https://github.com/rajesh-sahni/DeepDetect.git
-cd DeepDetect
+git clone https://github.com/rajesh-sahni/DeepDetect.git  
+cd DeepDetect  
 
 ### 2. Install Dependencies
-cd Backend
-npm install
+cd Backend  
+npm install  
 
 ### 3. Run Backend
 npm start
