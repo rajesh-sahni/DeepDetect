@@ -4,7 +4,7 @@ An AI-powered web application that enables real-time image and video analytics a
 
 ## 📸 Demo
 
-![Demo GIF or Screenshot of UI]([link-to-your-demo-image-or-gif](https://drive.google.com/drive/u/2/folders/12iskoGeh5uakzQ2-HNBmH-VmoTBUEG09))
+![Demo GIF or Screenshot of UI]((https://drive.google.com/drive/u/2/folders/12iskoGeh5uakzQ2-HNBmH-VmoTBUEG09))
 
 [🚧 Live Demo Coming Soon](#)
 
@@ -81,3 +81,10 @@ DEEPDETECT/
 │   ├── .env
 │   └── server.js
 ```
+
+## 👨‍💻 Author
+
+**Rajesh Kumar**  
+🎓 MCA, NIT Surathkal  
+🌐 [Portfolio](https://rajesh-sahni.github.io/Portfolio/)  
+🔗 [GitHub](https://github.com/rajesh-sahni) | [LinkedIn](https://www.linkedin.com/in/hum_rajesh/)
