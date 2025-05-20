@@ -4,7 +4,7 @@ An AI-powered web application that enables real-time image and video analytics a
 
 ## 📸 Demo
 
-![Demo and Screenshot of UI](https://drive.google.com/uc?export=view&id=1AbCDeFGhIjKlMnOPQRsTuVWxyZ)
+![🚧Demo and Screenshot of UI](https://drive.google.com/uc?export=view&id=1AbCDeFGhIjKlMnOPQRsTuVWxyZ)
 
 
 [🚧 Live Demo Coming Soon](#)
