@@ -3,8 +3,7 @@
 An AI-powered web application that enables real-time image and video analytics and harmful object detection in real-time using TensorFlow.js, COCO-SSD model and OpenCV.js.
 
 ## 📸 Demo
-
-![Demo GIF or Screenshot of UI]((https://drive.google.com/drive/u/2/folders/12iskoGeh5uakzQ2-HNBmH-VmoTBUEG09))
+![Demo GIF & Screenshot of UI](https://drive.google.com/uc?export=view&id=1ABCdEFGhIJKlmNOPqrSTuvWxYZ)
 
 [🚧 Live Demo Coming Soon](#)
 
