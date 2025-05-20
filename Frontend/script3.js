@@ -46,7 +46,6 @@ const suspiciousObjects = [
   "sword",
   "axe",
   "stick",
-  "person",
 ];
 
 async function setupCamera() {
