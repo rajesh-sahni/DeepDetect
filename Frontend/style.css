@@ -233,28 +233,35 @@ body {
   padding: 10px;
   margin: 10px;
   gap: 10px;
-  margin-top: 80px;
+  margin-top: 10px;
 }
 
 .main-section {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
+  margin-top: 1rem;
   gap: 10px; /* Adds spacing between video and canvas */
   max-width: 100%;
   overflow: hidden;
   flex-wrap: nowrap; /* Prevents wrapping */
 }
 .vdo-box {
-  width: 48%; /* Ensures both elements fit within the display */
-  max-width: 720px; /* Prevents elements from getting too large */
-  height: auto;
-  max-height: 550px;
+  width: 100%; /* Ensures both elements fit within the display */
+  max-width: 1200px; /*Prevents elements from getting too large */
+  height: 100%;
+  max-height: 600px;
   object-fit: contain;
   border: 3px solid rgb(7, 213, 38);
   border-radius: 5px;
 }
+
+
+#canvas{
+  display: none;
+}
+
+
 /* video detection list and graph */
 .video-list-graph-container {
   display: flex;
@@ -328,7 +335,7 @@ body {
   align-items: center;
   flex-direction: row;
   gap: 2rem;
-  margin-top: 35px;
+  margin-top: 15px;
 }
 .live-btn button:disabled {
   cursor: not-allowed;
@@ -340,17 +347,17 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 20px;
-  padding: 10px;
-  margin: 10px;
 }
 .live-box {
-  height: 450px;
-  width: 700px;
-  margin-top: 20px;
+  height: 550px;
+  width: 1200px;
+  margin-top: 5px;
   object-fit: contain;
   border: 3px solid rgb(7, 213, 38);
   border-radius: 5px;
+}
+#live-canvas{
+  display: none;
 }
 #alertBox {
   margin-top: 20px;

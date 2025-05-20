@@ -21,6 +21,9 @@ window.onload = function () {
     await setupCamera();
     detectObjects();
 
+    liveVideo.style.display = "none";
+    liveCanvas.style.display = "block";
+
     startButton.disabled = true;
     stopButton.disabled = false;
   });
@@ -43,6 +46,7 @@ const suspiciousObjects = [
   "sword",
   "axe",
   "stick",
+  "person",
 ];
 
 async function setupCamera() {

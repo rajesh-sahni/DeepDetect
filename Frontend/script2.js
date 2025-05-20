@@ -127,6 +127,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       alert("⚠ Please upload a video first.");
       return;
     }
+    video.style.display = "none";
+    canvas.style.display = "block";
     video.play();
     video.addEventListener("playing", detectObjects, { once: true });
   });
