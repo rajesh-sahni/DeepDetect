@@ -15,18 +15,19 @@ An AI-powered web application that enables real-time image and video analytics a
 It utilizes machine learning models in-browser, ensuring privacy, speed, and accessibility without requiring heavy server-side computation.
 
 ✨ Key Features
-🖼 Object Detection in Images
+
+🖼 Object Detection in Images: 
 Upload images to detect and highlight multiple objects in real-time.
 
-🎞 Object Detection in Videos
+🎞 Object Detection in Videos: 
 Analyze pre-recorded videos frame-by-frame to identify objects.
 
-🎥 Harmful Object Detection in Live Video
+🎥 Harmful Object Detection in Live Video: 
 Detect weapons or suspicious items directly from live webcam feed.
 
-📊 Data Representation with List & Graph
+📊 Data Representation with List & Graph: 
 View detection results in a structured list and visual graphs for quick analysis.
 
-🚨 Harmful Object Alerts
+🚨 Harmful Object Alerts: 
 Get instant alert sounds and email notifications upon detecting dangerous objects.
 
