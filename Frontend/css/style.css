@@ -107,3 +107,118 @@ body {
   margin-top: 1rem;
   text-align: justify;
 }
+
+/* Responsive Design Adjustments */
+/* Large screens (1441px and above) */
+@media (min-width: 1441px) {
+  .description h2 {
+    font-size: 2.5rem;
+  }
+  .description h5 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Medium screens (1025px to 1440px) */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .description h2 {
+    font-size: 1.7rem;
+  }
+  .description h5 {
+    font-size: 1.1rem;
+  }
+}
+
+/* Medium Device - Landscape Tablets (769px to 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  #title {
+    font-size: 1.5rem;
+  }
+  .navlink ul {
+    font-size: 1rem;
+  }
+  .header h1 {
+    font-size: 1.5rem;
+  }
+  .btn {
+    font-size: 1rem;
+  }
+  .description h2 {
+    font-size: 1.5rem;
+  }
+  .description h5 {
+    font-size: 1rem;
+  }
+}
+
+/* Small Device - Portrait Tablets (481px to 768px) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  #title {
+    font-size: 1rem;
+  }
+  .logo img {
+    height: 18px;
+    width: 18px;
+  }
+  .navlink ul {
+    font-size: 0.8rem;
+  }
+  .header h1 {
+    font-size: 1rem;
+  }
+  .btn {
+    font-size: 0.8rem !important;
+  }
+  .description h2 {
+    font-size: 1rem;
+  }
+  .description h5 {
+    font-size: 0.5rem;
+  }
+  .navlink {
+    margin-right: 1rem;
+  }
+  .navlink ul li a {
+    margin-left: 1.5rem;
+    padding: 2px;
+  }
+}
+
+/* Extra Small Device - Mobile Phones (320px to 480px) */
+@media (max-width: 480px) {
+  #title {
+    font-size: 1.5rem;
+  }
+  .logo img {
+    height: 20px;
+    width: 20px;
+  }
+  .navlink {
+    display: none;
+  }
+  .home-section {
+    flex-direction: column;
+    width: 100%;
+  }
+  .home-section img {
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+  }
+  .description {
+    width: 100%;
+  }
+  .description h2 {
+    font-size: 1rem;
+  }
+  .description h5 {
+    font-size: 0.6rem;
+  }
+  .header h1 {
+    font-size: 0.7rem;
+  }
+  .btn {
+    font-size: 0.5rem !important;
+  }
+
+}
