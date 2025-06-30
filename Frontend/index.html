@@ -7,57 +7,89 @@
     <!-- Favicon (Logo in Title Bar) -->
     <link rel="icon" type="image/png" href="Logo.png" />
     <!-- Link CSS file -->
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/imageDetc.css" />
+    <link rel="stylesheet" href="./css/videoDetc.css" />
+    <link rel="stylesheet" href="./css/liveVideoDetc.css" />
+    <link rel="stylesheet" href="./css/footer.css" />
     <!-- Add OpenCV -->
     <script async src="opencv.js" onload="OpenCVReady()"></script>
   </head>
   <body>
-    <div class="navbar" id="image-detection">
-      <div class="logo">
-        <img src="Logo.png" alt="logo" />
-        <h1 id="title"><span>D</span>eep<span>D</span>etect</h1>
+    <div class="home-page">
+      <div class="navbar" id="image-detection">
+        <div class="logo">
+          <img src="Logo.png" alt="logo" />
+          <h1 id="title"><span>D</span>eep<span>D</span>etect</h1>
+        </div>
+        <div class="navlink">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#image-detection-link">Image</a></li>
+            <li><a href="#video-detection-link">Video</a></li>
+            <li><a href="#livevideo-detection-link">LiveVideo</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="navlink">
-        <ul>
-          <li><a href="#image-detection">Image</a></li>
-          <li><a href="#video-detection-link">Video</a></li>
-          <li><a href="#livevideo-detection-link">LiveVideo</a></li>
-        </ul>
+      <!-- Home Page -->
+      <div class="home-section">
+        <img src="home-image.png" alt="home-image" />
+        <div class="description">
+          <h2>
+            AI-Powered Video Analytics and Surveillance in Real-Time for Threat
+            Detection
+          </h2>
+          <h5>
+            DeepDetect is a video analytics real-time harmful object detection
+            for surveillance application designed to enhance surveillance and
+            public safety. Powered by AI and computer vision, DeepDetect can
+            detect harmful objects like gun, knife etc... in live camera feeds —
+            ensuring faster alerts and smarter monitoring.
+          </h5>
+        </div>
       </div>
     </div>
-    <div class="image-detection">
-      <div class="left-pannel">
-        <div class="left-content">
+
+    <!-- Object Detection in Image -->
+    <div class="image-detection" id="image-detection-link">
+      <div class="header">
+        <h1>Object Detection in Image</h1>
+      </div>
+      <div class="image-section">
+        <div class="image-box">
+          <!-- Uploaded Image (displayed above the table image) -->
+          <img id="uploaded-image" src="" alt="uploaded-image" />
+          <!-- Hidden file input element to trigger file selection -->
+          <input type="file" id="image-upload" style="display: none" />
+          <canvas id="main-canvas"></canvas>
+        </div>
+        <div class="input-image">
           <!-- Select image button   -->
           <button class="btn" id="select-image-btn">Select Image</button>
           <button class="btn" id="run-img-btn">Run</button>
           <button class="btn" id="img-list-graph-btn">List & Graph</button>
-
-          <!-- Hidden file input element to trigger file selection -->
-          <input type="file" id="image-upload" style="display: none" />
         </div>
       </div>
-
-      <div class="right-pannel">
-        <!-- Table Image (Background Image) -->
-        <img id="table-image" src="tablet.png" alt="table-image" />
-        <!-- Uploaded Image (displayed above the table image) -->
-        <img id="uploaded-image" src="" alt="uploaded-image" />
-        <canvas id="main-canvas"></canvas>
-      </div>
     </div>
+    <!-- Image detected list -->
     <div class="img-detected-list">
       <div class="header">
         <h1>List & Graph Of Object detection in Image</h1>
       </div>
-      <button class="btn img-refresh" id="refresh-button-img">Refresh</button>
-      <button class="btn img-list-hide" id="img-list-hide">Hide</button>
-      <div class="img-list-graph-container">
-        <div class="img-list-container">
-          <div id="img-detections-container"></div>
+      <div class="image-main-section">
+        <div class="image-detc-print-btn">
+          <button class="btn img-refresh" id="refresh-button-img">
+            Refresh
+          </button>
+          <button class="btn img-list-hide" id="img-list-hide">Hide</button>
         </div>
-        <div class="img-graph">
-          <canvas id="img-detectionsChart"></canvas>
+        <div class="img-list-graph-container">
+          <div class="img-list-container">
+            <div id="img-detections-container"></div>
+          </div>
+          <div class="img-graph">
+            <canvas id="img-detectionsChart"></canvas>
+          </div>
         </div>
       </div>
     </div>
@@ -84,15 +116,20 @@
       <div class="header">
         <h1>List & Graph Of Object detection in Video</h1>
       </div>
-      <button class="btn vdo-refresh" id="refresh-button-vdo">Refresh</button>
-      <button class="btn vdo-list-hide" id="vdo-list-hide">Hide</button>
-
-      <div class="video-list-graph-container">
-        <div class="vdo-list-container">
-          <div id="vdo-detections-container"></div>
+      <div class="video-main-section">
+        <div class="video-detc-print-btn">
+          <button class="btn vdo-refresh" id="refresh-button-vdo">
+            Refresh
+          </button>
+          <button class="btn vdo-list-hide" id="vdo-list-hide">Hide</button>
         </div>
-        <div class="video-graph">
-          <canvas id="video-detectionsChart"></canvas>
+        <div class="video-list-graph-container">
+          <div class="vdo-list-container">
+            <div id="vdo-detections-container"></div>
+          </div>
+          <div class="video-graph">
+            <canvas id="video-detectionsChart"></canvas>
+          </div>
         </div>
       </div>
     </div>
@@ -124,14 +161,20 @@
       <div class="header">
         <h1>List & Graph Of Object detection in Live Video</h1>
       </div>
-      <button class="btn live-refresh" id="refresh-button-live">Refresh</button>
-      <button class="btn live-list-hide" id="live-list-hide">Hide</button>
-      <div class="live-list-graph-container">
-        <div class="live-list-container">
-          <div id="live-detections-container"></div>
+      <div class="live-main-section">
+        <div class="live-detc-print-btn">
+          <button class="btn live-refresh" id="refresh-button-live">
+            Refresh
+          </button>
+          <button class="btn live-list-hide" id="live-list-hide">Hide</button>
         </div>
-        <div class="live-graph">
-          <canvas id="live-detectionsChart"></canvas>
+        <div class="live-list-graph-container">
+          <div class="live-list-container">
+            <div id="live-detections-container"></div>
+          </div>
+          <div class="live-graph">
+            <canvas id="live-detectionsChart"></canvas>
+          </div>
         </div>
       </div>
     </div>
@@ -204,8 +247,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
 
     <!-- Load your JavaScript files AFTER TensorFlow.js -->
-    <script defer src="script.js"></script>
-    <script defer src="script2.js"></script>
-    <script defer src="script3.js"></script>
+    <script defer src="./javascript/script.js"></script>
+    <script defer src="./javascript/script2.js"></script>
+    <script defer src="./javascript/script3.js"></script>
   </body>
 </html>

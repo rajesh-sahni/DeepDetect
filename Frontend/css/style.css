@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap");
+body {
+  font-family: "Orbitron", sans-serif;
+  background-color: #f0f0f0;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.home-page {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.navbar {
+  width: 100%;
+  background-color: darkblue;
+  box-shadow: 0 4px 10px rgba(0, 0, 139, 0.6);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* margin-bottom: 1rem; */
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+#title {
+  font-size: 2rem;
+  color: white;
+}
+#title span {
+  color: red;
+}
+
+.logo img {
+  height: 45px;
+  width: 45px;
+}
+.navlink {
+  display: flex;
+  margin-right: 5rem;
+}
+
+.navlink ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1.5rem;
+  list-style-type: none;
+}
+
+.navlink ul li a {
+  margin-left: 3rem;
+  color: white;
+  text-decoration: none;
+  border: 1px solid white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.navlink ul li:hover {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.home-section {
+  width: 100%;
+  height: calc(100vh - 60px); /* Adjusting for navbar height */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center; /* Light background for contrast */
+}
+.home-section img {
+  width: 50%;
+  height: auto;
+  padding: 2rem;
+}
+.description {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 3rem;
+  gap: 2rem;
+}
+
+.description h2 {
+  font-size: 2.5rem;
+  color: darkblue;
+  text-align: justify;
+}
+.description h5 {
+  font-size: 1.3rem;
+  color: #333;
+  margin-top: 1rem;
+  text-align: justify;
+}

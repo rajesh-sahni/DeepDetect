@@ -93,6 +93,7 @@ function OpenCVReady() {
     document.getElementById("run-img-btn").onclick = function () {
       console.log("Object Detection Image");
       const image = document.getElementById("uploaded-image");
+
       let inputImage = cv.imread(image);
       cocoSsd.load().then((model) => {
         model.detect(image).then((predictions) => {
@@ -101,6 +102,8 @@ function OpenCVReady() {
           if (predictions.length > 0) {
             drawBoundingBox(predictions, inputImage);
             cv.imshow("main-canvas", inputImage);
+            document.getElementById("main-canvas").style.display = "block";
+            document.getElementById("uploaded-image").style.display = "none";
             inputImage.delete();
 
             // Send detected objects to backend

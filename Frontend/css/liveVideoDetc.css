@@ -1,0 +1,136 @@
+/* Live video detection */
+.live-video-detection {
+  height: 100vh;
+  width: 100%;
+}
+.live-main-section {
+  width: 100%;
+  height: calc(100vh - 60px); /* Adjusting for navbar height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+}
+.live-btn {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 30px;
+}
+.live-btn button:disabled {
+  cursor: not-allowed;
+  background-color: #cccccc;
+}
+
+.live-vdo-input {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.live-box {
+  height: 100%;
+  width: 90%;
+  object-fit: contain;
+  border: 3px solid rgb(7, 213, 38);
+  border-radius: 5px;
+}
+#live-canvas {
+  display: none;
+}
+#alertBox {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: red;
+  display: none;
+}
+
+/* live video detection list and graph */
+.live-detected-list {
+  width: 100%;
+  height: 100vh;
+  display: none;
+}
+.live-main-section {
+  width: 100%;
+  height: calc(100vh - 60px); /* Adjusting for navbar height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+}
+.live-detc-print-btn {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 30px;
+}
+.live-list-graph-container {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.live-list-container {
+  font-family: Arial, sans-serif;
+  height: 100%;
+  width: 30%;
+  overflow-y: auto;
+  background: white;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-left: 2.5rem;
+  margin-top: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.live-detection {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  font-size: 1.1rem;
+}
+
+.live-detection:last-child {
+  border-bottom: none;
+}
+/* video Graph */
+.live-graph {
+  width: 70%;
+  height: 100%;
+  overflow-x: auto;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: auto;
+  background: #f8f8f8;
+  margin: 10px 20px;
+}
+#live-detectionsChart {
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive Design Adjustments */
+@media (min-width: 1441px) {
+  .live-detection{
+    font-size: 2rem;
+  }
+}
+@media (min-width: 1025px) {
+  .live-detection{
+    font-size: 1.1rem;
+  }
+}
